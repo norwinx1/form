@@ -1,14 +1,17 @@
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [name, setName] = useState();
+  const [username, setUsername] = useState();
+  const [course, setCourse] = useState();
   return (
     <div className="App">
       <div class="container-fluid">
         <form class="form-inline">
           <label class="sr-only" for="inlineFormInputName2">Name</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe" />
-
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe" onChange={event => setName(event.target.value)}/>
           <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
           <div class="input-group mb-2 mr-sm-2">
             <div class="input-group-prepend">

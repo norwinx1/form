@@ -3,39 +3,55 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 
 function App() {
-  const [name, setName] = useState();
-  const [username, setUsername] = useState();
-  const [course, setCourse] = useState();
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [course, setCourse] = useState('');
+  const [message, setMessage] = useState('');
+  var usernames = ['hanswurst', 'maxmuster', 'reinerzufall', 'peternull']
+  function validate() {
+    setMessage('');
+    if (name === '' || username === '' || course === '') {
+      setMessage('Please fill out all fields; ');
+    }
+    if (usernames.includes(username)) {
+      setMessage(message + 'Username already used; ');
+    }
+    if (message === '') {
+      setMessage('Success');
+      window.location.reload();
+    }
+  }
   return (
     <div className="App">
-      <div class="container-fluid">
-        <form class="form-inline">
-          <label class="sr-only" for="inlineFormInputName2">Name</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe" onChange={event => setName(event.target.value)}/>
-          <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-          <div class="input-group mb-2 mr-sm-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text">@</div>
+      <div className="container-fluid">
+        <form className="form-inline">
+          <label className="sr-only" htmlFor="inlineFormInputName2">Name</label>
+          <input type="text" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe" onChange={event => setName(event.target.value)}/>
+          <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Username</label>
+          <div className="input-group mb-2 mr-sm-2">
+            <div className="input-group-prepend">
+              <div className="input-group-text">@</div>
             </div>
-            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username" />
+            <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Username" onChange={event => setUsername(event.target.value)}/>
           </div>
         </form>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-          <label class="form-check-label" for="inlineRadio1">React Kurs</label>
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="react" onChange={event => setCourse(event.target.value)}/>
+          <label className="form-check-label" htmlFor="inlineRadio1">React Kurs</label>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-          <label class="form-check-label" for="inlineRadio2">JavaScript Kurs</label>
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="js" onChange={event => setCourse(event.target.value)}/>
+          <label className="form-check-label" htmlFor="inlineRadio2">JavaScript Kurs</label>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled />
-          <label class="form-check-label" for="inlineRadio3">Angular Kurs</label>
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="angular" disabled onChange={event => setCourse(event.target.value)}/>
+          <label className="form-check-label" htmlFor="inlineRadio3">Angular Kurs</label>
         </div>
-        <div class="p-2">
-          <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        <div className="p-2">
+          <button type="submit" onClick={() => validate()} className="btn btn-primary mb-2">Submit</button>
         </div>
+        <p>{message}</p>
       </div>
     </div>
   );

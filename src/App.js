@@ -16,17 +16,8 @@ function App() {
           </div>
           <input type ="text" class ="form-control" id="inlineFormInputGroupUsername2" placeholder="Username"/>
           </div>
-
-          <div class ="form-check mb-2 mr-sm-2">
-          <input class ="form-check-input" type ="checkbox" id="inlineFormCheck"/>
-          <label class ="form-check-label" for="inlineFormCheck">
-          Remember me
-          </label>
-          </div>
-
-          <button type ="submit" class ="btn btn-primary mb-2">Submit</button>
         </form>
-        
+
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
           <label class="form-check-label" for="inlineRadio1">1</label>
@@ -39,6 +30,7 @@ function App() {
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled />
           <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
         </div>
+        <button type ="submit" class ="btn btn-primary mb-2">Submit</button>
       </div>
     </div>
   );

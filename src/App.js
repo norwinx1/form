@@ -8,18 +8,20 @@ function App() {
   const [course, setCourse] = useState('');
   const [message, setMessage] = useState('');
   var usernames = ['hanswurst', 'maxmuster', 'reinerzufall', 'peternull']
+  var messageBackend = '';
   function validate() {
-    setMessage('');
+    messageBackend = '';
     if (name === '' || username === '' || course === '') {
-      setMessage('Please fill out all fields; ');
+      messageBackend = 'Please fill out all fields; ';
     }
     if (usernames.includes(username)) {
-      setMessage(message + 'Username already used; ');
+      messageBackend = messageBackend + 'Username already used; ';
     }
-    if (message === '') {
-      setMessage('Success');
+    if (messageBackend === '') {
+      messageBackend = 'Success';
       window.location.reload();
     }
+    setMessage(messageBackend);
   }
   return (
     <div className="App">
@@ -52,6 +54,11 @@ function App() {
           <button type="submit" onClick={() => validate()} className="btn btn-primary mb-2">Submit</button>
         </div>
         <p>{message}</p>
+        <div>
+          <p>{name}</p>
+          <p>{username}</p>
+          <p>{course}</p>
+        </div>
       </div>
     </div>
   );
